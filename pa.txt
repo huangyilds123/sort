@@ -1,0 +1,97 @@
+#include <iostream>
+using namespace std;
+void printArray(int *array, int n)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        cout << array[i] << " ";
+    }
+}
+
+
+int patition(int* array , int m , int n , int pivot)
+{
+    int temp = array[pivot];
+     array[pivot]  = array[m];
+    array[m] = temp;
+    //cout << "** array pipot is: " << array[m] << "  ****\n";
+   // cout << "** array middle is: " << array[pivot] << "  ****\n";./
+    int up = m + 1;
+    int down = n;
+    int size = n + 1;
+    cout << "pivot is " << array[m] << " ***\n";
+   
+    for(int i = 0 ; i < size ; i++)
+               {
+                   cout << array[i] << " ";
+               }
+               cout << endl;
+    
+    while(up < down)
+    {
+        while(array[up] < array[m] && up <= n)
+        {
+            up++;
+        }
+        cout << "upIndex is " << up << " ***\n";
+        // cout << "array down is " << array[down] << " ***\n";
+        cout << " downIndex is " << down << " ***\n\n\n";
+        
+        while(array[down] > array[m] && down>= m )
+        {
+            //cout << "some thing wrong\n";
+            down--;
+        }
+        cout << "upIndex is " << up << " ***\n";
+         cout << "downIndex is " << down << " ***\n\n\n";
+        
+        if(down > up )
+        {
+        temp = array[up];
+        array[up] = array[down];
+        array[down] = temp;
+            
+            
+                                         for(int i = 0 ; i < size ; i++)
+            {
+                cout << array[i] << " ";
+            }
+            
+            cout << endl;
+      //  up++;
+       // down--;
+             //printArray[array, 5];
+        }
+       
+        if(down <= up)
+        {
+            temp = array[m];
+            array[m] = array[down];
+            array[down] = temp;
+        }
+    }
+        
+    //cout << "Hi\n";
+    return down;
+}
+
+
+
+int main()
+{
+    int array[] = {4,6,1,8,7,2,3,5,9,10};
+    int n = sizeof(array)/sizeof(array[0]);
+//printArray(array, n);
+    int returnValue  =patition(array,0,9,7);
+    cout << "****  " << returnValue << "  *****\n";
+    //printArray(array, n);
+    
+   for(int i = 0 ; i < n ; i++)
+                 {
+                     cout << array[i] << " ";
+                 }
+                 cout << endl;
+      
+    return 0;
+}
+
